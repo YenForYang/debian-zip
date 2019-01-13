@@ -1,0 +1,3 @@
+zip-dbgsym_3.0-11_amd64.deb debug optional automatic=yes
+zip_3.0-11_amd64.buildinfo utils optional
+zip_3.0-11_amd64.deb utils optional

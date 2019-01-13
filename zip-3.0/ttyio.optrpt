@@ -1,0 +1,107 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -diag-disable=10013,10385,10237,10346 -diag-error-limit=1 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=25555 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -Wall -inline-max-total-size=18888 -DUNIX -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -c -o ttyio.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 18888 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: read(int, void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (read(int, void *, size_t))/usr/include/x86_64-linux-gnu/bits/unistd.h(35,1)
+
+===========================================================================
+
+Begin optimization report for: open(const char *, int, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (open(const char *, int, ...))/usr/include/x86_64-linux-gnu/bits/fcntl2.h(42,1)
+
+===========================================================================
+
+Begin optimization report for: Echoff()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Echoff()) [3/5=60.0%] ttyio.c(306,1)
+  -> EXTERN: (310,5) tcgetattr(int, struct termios *)
+  -> EXTERN: (312,5) tcsetattr(int, int, const struct termios *)
+
+===========================================================================
+
+Begin optimization report for: Echon()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Echon()) [4/5=80.0%] ttyio.c(320,1)
+  -> EXTERN: (324,9) tcgetattr(int, struct termios *)
+  -> EXTERN: (326,9) tcsetattr(int, int, const struct termios *)
+
+===========================================================================
+
+Begin optimization report for: getp()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (getp()) [5/5=100.0%] ttyio.c(604,1)
+  -> INLINE: (616,14) open(const char *, int, ...) (isz = 48) (sz = 60)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(43,7) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(44,5) __open_too_many_args(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(46,7) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(48,42) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(50,4) __open_missing_mode(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(51,11) __open_2(const char *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(53,14) __open_alias(const char *, int, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(53,45) __builtin_va_arg_pack(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(56,7) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(57,12) __open_2(const char *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(59,10) __open_alias(const char *, int, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(59,41) __builtin_va_arg_pack(void)
+  -> EXTERN: (622,9) fputs(const char *__restrict__, FILE *__restrict__)
+  -> EXTERN: (623,9) fputs(const char *__restrict__, FILE *__restrict__)
+  -> EXTERN: (624,9) fflush(FILE *)
+  -> INLINE: (626,9) Echoff() (isz = 12) (sz = 17)
+    -> EXTERN: (310,5) tcgetattr(int, struct termios *)
+    -> EXTERN: (312,5) tcsetattr(int, int, const struct termios *)
+  -> INLINE (MANUAL): (628,13) read(int, void *, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+  -> INLINE: (632,9) Echon() (isz = 15) (sz = 18)
+    -> EXTERN: (324,9) tcgetattr(int, struct termios *)
+    -> EXTERN: (326,9) tcsetattr(int, int, const struct termios *)
+  -> EXTERN: (633,9) putc(int, FILE *)
+  -> EXTERN: (633,30) fflush(FILE *)
+  -> EXTERN: (639,5) close(int)
+
+===========================================================================

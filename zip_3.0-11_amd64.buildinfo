@@ -1,0 +1,183 @@
+Format: 1.0
+Source: zip
+Binary: zip
+Architecture: amd64
+Version: 3.0-11
+Checksums-Md5:
+ 4f6968f1e09ad2cf67b21bf4a1d45574 164964 zip-dbgsym_3.0-11_amd64.deb
+ 77ea7cd804cd61eab3abe15833faafb3 315776 zip_3.0-11_amd64.deb
+Checksums-Sha1:
+ 681f815d2e6c31133a9a3f62129755ec0fc579ac 164964 zip-dbgsym_3.0-11_amd64.deb
+ 0e723e37c9138f077a0488ef92281367194a89ba 315776 zip_3.0-11_amd64.deb
+Checksums-Sha256:
+ aba3f33adb0b0a2c5ddf144a7321d184a3a0578684e667d3367da5f1eb88ddc1 164964 zip-dbgsym_3.0-11_amd64.deb
+ fc20d7b6404b651c9f09ea6ff683c43543e510b05dd2c3e1b7cf4dad6a0f9776 315776 zip_3.0-11_amd64.deb
+Build-Origin: Debian
+Build-Architecture: amd64
+Build-Date: Sun, 13 Jan 2019 13:21:23 +0100
+Installed-Build-Depends:
+ autoconf (= 2.69-11),
+ automake (= 1:1.16.1-4),
+ autopoint (= 0.19.8.1-2),
+ autotools-dev (= 20180224.1),
+ base-files (= 10.1),
+ base-passwd (= 3.5.45),
+ bash (= 4.4.18-3.1),
+ binutils (= 2.31.1-11),
+ binutils-common (= 2.31.1-11),
+ binutils-x86-64-linux-gnu (= 2.31.1-11),
+ bsdmainutils (= 11.1.2+b1),
+ bsdutils (= 1:2.33-0.2),
+ build-essential (= 12.5),
+ bzip2 (= 1.0.6-9),
+ coreutils (= 8.30-1),
+ cpp (= 4:8.2.0-2),
+ cpp-7 (= 7.4.0-2),
+ cpp-8 (= 8.2.0-13),
+ dash (= 0.5.10.2-4),
+ debconf (= 1.5.69),
+ debhelper (= 11.5.4),
+ debianutils (= 4.8.6),
+ dh-autoreconf (= 19),
+ dh-strip-nondeterminism (= 1.0.0-1),
+ diffutils (= 1:3.6-1),
+ dpkg (= 1.19.2),
+ dpkg-dev (= 1.19.2),
+ dwz (= 0.12-3),
+ fdisk (= 2.33-0.2),
+ file (= 1:5.35-1),
+ findutils (= 4.6.0+git+20181018-1),
+ g++ (= 4:8.2.0-2),
+ g++-8 (= 8.2.0-13),
+ gawk (= 1:4.2.1+dfsg-1),
+ gcc (= 4:8.2.0-2),
+ gcc-7 (= 7.4.0-2),
+ gcc-7-base (= 7.4.0-2),
+ gcc-8 (= 8.2.0-13),
+ gcc-8-base (= 8.2.0-13),
+ gettext (= 0.19.8.1-2),
+ gettext-base (= 0.19.8.1-2),
+ grep (= 3.1-2),
+ groff-base (= 1.22.4-1),
+ gzip (= 1.9-2),
+ hostname (= 3.21),
+ init-system-helpers (= 1.56+nmu1),
+ install-info (= 6.5.0.dfsg.1-4),
+ intel-comp-ps-ss-bec-19.0.1-144 (= 19.0.1-144),
+ intltool-debian (= 0.35.0+20060710.4),
+ libacl1 (= 2.2.52-3+b1),
+ libarchive-zip-perl (= 1.64-1),
+ libasan4 (= 7.4.0-2),
+ libasan5 (= 8.2.0-13),
+ libatomic1 (= 8.2.0-13),
+ libattr1 (= 1:2.4.47-2+b2),
+ libaudit-common (= 1:2.8.4-3),
+ libaudit1 (= 1:2.8.4-3),
+ libbinutils (= 2.31.1-11),
+ libblkid1 (= 2.33-0.2),
+ libbsd0 (= 0.9.1-1),
+ libbz2-1.0 (= 1.0.6-9),
+ libbz2-dev (= 1.0.6-9),
+ libc-bin (= 2.28-2),
+ libc-dev-bin (= 2.28-2),
+ libc6 (= 2.28-2),
+ libc6-dev (= 2.28-2),
+ libcap-ng0 (= 0.7.9-1+b1),
+ libcc1-0 (= 8.2.0-13),
+ libcilkrts5 (= 7.4.0-2),
+ libcroco3 (= 0.6.12-3),
+ libdb5.3 (= 5.3.28+dfsg1-0.2),
+ libdebconfclient0 (= 0.246),
+ libdpkg-perl (= 1.19.2),
+ libelf1 (= 0.175-1),
+ libfdisk1 (= 2.33-0.2),
+ libffi6 (= 3.2.1-9),
+ libfile-stripnondeterminism-perl (= 1.0.0-1),
+ libgcc-7-dev (= 7.4.0-2),
+ libgcc-8-dev (= 8.2.0-13),
+ libgcc1 (= 1:8.2.0-13),
+ libgcrypt20 (= 1.8.4-4),
+ libgdbm-compat4 (= 1.18.1-2),
+ libgdbm6 (= 1.18.1-2),
+ libglib2.0-0 (= 2.58.2-3),
+ libgmp10 (= 2:6.1.2+dfsg-4),
+ libgomp1 (= 8.2.0-13),
+ libgpg-error0 (= 1.33-3),
+ libicu63 (= 63.1-5),
+ libisl19 (= 0.20-2),
+ libitm1 (= 8.2.0-13),
+ liblsan0 (= 8.2.0-13),
+ liblz4-1 (= 1.8.2-1),
+ liblzma5 (= 5.2.4-1),
+ libmagic-mgc (= 1:5.35-1),
+ libmagic1 (= 1:5.35-1),
+ libmount1 (= 2.33-0.2),
+ libmpc3 (= 1.1.0-1),
+ libmpfr6 (= 4.0.1-2),
+ libmpx2 (= 8.2.0-13),
+ libncursesw6 (= 6.1+20181013-1),
+ libpam-modules (= 1.1.8-3.8),
+ libpam-modules-bin (= 1.1.8-3.8),
+ libpam-runtime (= 1.1.8-3.8),
+ libpam0g (= 1.1.8-3.8),
+ libpcre3 (= 2:8.39-11),
+ libperl5.28 (= 5.28.1-3),
+ libpipeline1 (= 1.5.0-2),
+ libquadmath0 (= 8.2.0-13),
+ libreadline7 (= 7.0-5),
+ libseccomp2 (= 2.3.3-4),
+ libselinux1 (= 2.8-1+b1),
+ libsigsegv2 (= 2.12-2),
+ libsmartcols1 (= 2.33-0.2),
+ libstdc++-8-dev (= 8.2.0-13),
+ libstdc++6 (= 8.2.0-13),
+ libsystemd0 (= 240-2),
+ libtinfo5 (= 6.1+20181013-1),
+ libtinfo6 (= 6.1+20181013-1),
+ libtool (= 2.4.6-6),
+ libtsan0 (= 8.2.0-13),
+ libubsan0 (= 7.4.0-2),
+ libubsan1 (= 8.2.0-13),
+ libuchardet0 (= 0.0.6-3),
+ libudev1 (= 240-2),
+ libunistring0 (= 0.9.6+really0.9.3-0.1),
+ libuuid1 (= 2.33-0.2),
+ libxml2 (= 2.9.8-1),
+ linux-libc-dev (= 4.19.12-1),
+ login (= 1:4.5-1.1),
+ m4 (= 1.4.18-2),
+ make (= 4.2.1-1.2),
+ man-db (= 2.8.4-3),
+ mawk (= 1.3.3-17),
+ ncurses-base (= 6.1+20181013-1),
+ ncurses-bin (= 6.1+20181013-1),
+ patch (= 2.7.6-3),
+ perl (= 5.28.1-3),
+ perl-base (= 5.28.1-3),
+ perl-modules-5.28 (= 5.28.1-3),
+ po-debconf (= 1.0.21),
+ readline-common (= 7.0-5),
+ sed (= 4.7-1),
+ sensible-utils (= 0.0.12),
+ sysvinit-utils (= 2.93-2),
+ tar (= 1.30+dfsg-3),
+ util-linux (= 2.33-0.2),
+ xz-utils (= 5.2.4-1),
+ zlib1g (= 1:1.2.11.dfsg-1)
+Environment:
+ AR="xiar.pl"
+ CC="icc.pl"
+ CPP="icc.pl -E"
+ CXX="icpc.pl"
+ DEB_BUILD_OPTIONS="nocheck nodoc parallel=8"
+ DEB_BUILD_PROFILES="nobiarch nocheck nodoc"
+ DEB_CFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security"
+ DEB_CXXFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security"
+ DEB_FCFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -fstack-protector-strong -march=native -pipe -fstack-security-check"
+ DEB_FFLAGS_SET="-g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -fstack-protector-strong -march=native -pipe -fstack-security-check"
+ DEB_LDFLAGS_SET=""
+ DPKG_GENSYMBOLS_CHECK_LEVEL="1"
+ LANG="en_US.UTF-8"
+ LC_CTYPE="en_US.UTF-8"
+ MAKEFLAGS="-l 8"
+ SOURCE_DATE_EPOCH="1439761084"

@@ -1,0 +1,12 @@
+Package: zip-dbgsym
+Source: zip
+Version: 3.0-11
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Santiago Vila <sanvila@debian.org>
+Installed-Size: 235
+Depends: zip (= 3.0-11)
+Section: debug
+Priority: optional
+Description: debug symbols for zip
+Build-Ids: 0731e322fc6c4a3ceaee69a108037ddd1e34534e 639cea7a93711fcedb07b3a245249322623d6982 756529b9dc742b734124801660826e9b27dbedff 966f0e0bbc406be0333478746bff240f231e46fe

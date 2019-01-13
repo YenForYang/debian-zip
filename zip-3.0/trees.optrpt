@@ -1,0 +1,361 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -diag-disable=10013,10385,10237,10346 -diag-error-limit=1 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=25555 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -Wall -inline-max-total-size=18888 -DUNIX -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -c -o trees.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 18888 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: memcpy(void *__restrict__, const void *__restrict__, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memcpy(void *__restrict__, const void *__restrict__, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(33,1)
+
+===========================================================================
+
+Begin optimization report for: pqdownheap()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (pqdownheap()) trees.c(606,1)
+
+===========================================================================
+
+Begin optimization report for: gen_bitlen()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (gen_bitlen()) trees.c(641,1)
+
+===========================================================================
+
+Begin optimization report for: gen_codes()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (gen_codes()) trees.c(727,1)
+
+===========================================================================
+
+Begin optimization report for: build_bl_tree()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (build_bl_tree()) trees.c(947,1)
+
+===========================================================================
+
+Begin optimization report for: scan_tree()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (scan_tree()) trees.c(855,1)
+
+===========================================================================
+
+Begin optimization report for: build_tree()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (build_tree()) trees.c(767,1)
+
+===========================================================================
+
+Begin optimization report for: send_all_trees()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_all_trees()) trees.c(981,1)
+
+===========================================================================
+
+Begin optimization report for: send_bits..2()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_bits..2()) trees.c(1326,1)
+  CLONED FROM: send_bits()(X,3)
+
+===========================================================================
+
+Begin optimization report for: send_tree()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_tree()) trees.c(899,1)
+
+===========================================================================
+
+Begin optimization report for: send_bits..0()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_bits..0()) trees.c(1326,1)
+  CLONED FROM: send_bits()(X,5)
+
+===========================================================================
+
+Begin optimization report for: send_bits..1()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_bits..1()) trees.c(1326,1)
+  CLONED FROM: send_bits()(X,4)
+
+===========================================================================
+
+Begin optimization report for: flush_block()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (flush_block()) [13/23=56.5%] trees.c(1018,1)
+  -> INLINE: (1025,37) set_file_type() (isz = 47) (sz = 53)
+  -> INLINE: (1028,5) build_tree() (isz = 697) (sz = 702)
+    -> INLINE: (807,39) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (813,9) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (831,9) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (840,5) gen_bitlen() (isz = 191) (sz = 197)
+    -> INLINE: (843,5) gen_codes() (isz = 69) (sz = 76)
+      -> INLINE: (750,29) bi_reverse() (isz = 17) (sz = 26)
+  -> INLINE: (1031,5) build_tree() (isz = 697) (sz = 702)
+    -> INLINE: (807,39) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (813,9) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (831,9) pqdownheap() (isz = 87) (sz = 94)
+    -> INLINE: (840,5) gen_bitlen() (isz = 191) (sz = 197)
+    -> INLINE: (843,5) gen_codes() (isz = 69) (sz = 76)
+      -> INLINE: (750,29) bi_reverse() (isz = 17) (sz = 26)
+  -> INLINE: (1040,19) build_bl_tree() (isz = 30) (sz = 35)
+    -> INLINE: (951,5) scan_tree() (isz = 91) (sz = 98)
+    -> INLINE: (952,5) scan_tree() (isz = 91) (sz = 98)
+    -> INLINE: (955,5) build_tree() (isz = 697) (sz = 702)
+      -> INLINE: (807,39) pqdownheap() (isz = 87) (sz = 94)
+      -> INLINE: (813,9) pqdownheap() (isz = 87) (sz = 94)
+      -> INLINE: (831,9) pqdownheap() (isz = 87) (sz = 94)
+      -> INLINE: (840,5) gen_bitlen() (isz = 191) (sz = 197)
+      -> INLINE: (843,5) gen_codes() (isz = 69) (sz = 76)
+        -> INLINE: (750,29) bi_reverse() (isz = 17) (sz = 26)
+  -> EXTERN: (1066,9) seekable(void)
+  -> EXTERN: (1069,26) error(const char *)
+  -> INLINE: (1071,9) copy_block() (isz = 155) (sz = 164)
+    -> INLINE: (1430,5) bi_windup() (isz = 49) (sz = 52)
+      -> EXTERN: (1370,9) flush_outbuf(char *, unsigned int *)
+      -> EXTERN: (1372,9) flush_outbuf(char *, unsigned int *)
+      -> EXTERN: (1375,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1433,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1434,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1440,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE (MANUAL): (1450,17) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> EXTERN: (1453,17) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1461,13) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1464,9) error(const char *)
+    -> INLINE (MANUAL): (1466,9) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE: (1089,9) send_bits() (isz = 43) (sz = 50)
+    -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1093,9) copy_block() (isz = 155) (sz = 164)
+    -> INLINE: (1430,5) bi_windup() (isz = 49) (sz = 52)
+      -> EXTERN: (1370,9) flush_outbuf(char *, unsigned int *)
+      -> EXTERN: (1372,9) flush_outbuf(char *, unsigned int *)
+      -> EXTERN: (1375,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1433,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1434,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1440,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE (MANUAL): (1450,17) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> EXTERN: (1453,17) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1461,13) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1464,9) error(const char *)
+    -> INLINE (MANUAL): (1466,9) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE: (1100,9) send_bits() (isz = 43) (sz = 50)
+    -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1101,9) compress_block() (isz = 374) (sz = 381)
+    -> INLINE: (1214,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1219,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1223,17) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1230,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1234,17) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1240,5) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1106,9) send_bits() (isz = 43) (sz = 50)
+    -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1107,9) send_all_trees() (isz = 37) (sz = 46)
+    -> INLINE: (988,5) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (990,5) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (991,5) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (994,9) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (999,5) send_tree() (isz = 455) (sz = 462)
+      -> INLINE: (916,18) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (920,17) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (923,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (923,42) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (926,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (926,44) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (929,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (929,46) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1003,5) send_tree() (isz = 455) (sz = 462)
+      -> INLINE: (916,18) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (920,17) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (923,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (923,42) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (926,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (926,44) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (929,13) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+      -> INLINE: (929,46) send_bits() (isz = 43) (sz = 50)
+        -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1108,9) compress_block() (isz = 374) (sz = 381)
+    -> INLINE: (1214,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1219,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1223,17) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1230,13) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1234,17) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+    -> INLINE: (1240,5) send_bits() (isz = 43) (sz = 50)
+      -> EXTERN: (1340,9) flush_outbuf(char *, unsigned int *)
+  -> INLINE: (1115,5) init_block() (isz = 35) (sz = 38)
+  -> INLINE: (1129,9) bi_windup() (isz = 49) (sz = 52)
+    -> EXTERN: (1370,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1372,9) flush_outbuf(char *, unsigned int *)
+    -> EXTERN: (1375,9) flush_outbuf(char *, unsigned int *)
+
+===========================================================================
+
+Begin optimization report for: ct_tally()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (ct_tally()) [14/23=60.9%] trees.c(1147,1)
+
+===========================================================================
+
+Begin optimization report for: compress_block()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (compress_block()) trees.c(1200,1)
+
+===========================================================================
+
+Begin optimization report for: set_file_type()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (set_file_type()) trees.c(1265,1)
+
+===========================================================================
+
+Begin optimization report for: send_bits()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (send_bits()) trees.c(1326,1)
+
+===========================================================================
+
+Begin optimization report for: bi_reverse()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (bi_reverse()) trees.c(1354,1)
+
+===========================================================================
+
+Begin optimization report for: bi_windup()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (bi_windup()) trees.c(1368,1)
+
+===========================================================================
+
+Begin optimization report for: copy_block()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (copy_block()) trees.c(1429,1)
+
+===========================================================================
+
+Begin optimization report for: bi_init()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (bi_init()) [21/23=91.3%] trees.c(1305,1)
+
+===========================================================================
+
+Begin optimization report for: init_block()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (init_block()) trees.c(560,1)
+
+===========================================================================
+
+Begin optimization report for: ct_init()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (ct_init()) [23/23=100.0%] trees.c(475,1)
+  -> INLINE: (544,5) gen_codes() (isz = 69) (sz = 76)
+    -> INLINE: (750,29) bi_reverse() (isz = 17) (sz = 26)
+  -> INLINE: (549,37) bi_reverse() (isz = 17) (sz = 26)
+  -> INLINE: (553,5) init_block() (isz = 35) (sz = 38)
+
+===========================================================================

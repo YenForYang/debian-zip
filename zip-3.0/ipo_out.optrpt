@@ -1,0 +1,181 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -diag-disable=10013,10385,10237,10346 -diag-error-limit=1 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=25555 -Wl,--as-needed -ozipsplit -lbz2 -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: true
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: true
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 25555 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+fileio.c(2642:9)::main:  Assume directive not useful: removing
+
+fileio.c(2648:11)::main:  Assume directive not useful: removing
+
+fileio.c(2680:13)::main:  Assume directive not useful: removing
+
+fileio.c(2760:13)::main:  Assume directive not useful: removing
+
+fileio.c(2642:9)::main:  Assume directive not useful: removing
+
+fileio.c(2648:11)::main:  Assume directive not useful: removing
+
+fileio.c(2680:13)::main:  Assume directive not useful: removing
+
+fileio.c(2760:13)::main:  Assume directive not useful: removing
+
+zipfile.c(6135:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6136:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6148:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6149:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6157:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6158:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6303:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6360:5)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(5346:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(5347:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(5326:9)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(5327:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2642:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2648:11)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2680:13)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2760:13)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6383:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2642:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2648:11)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2680:13)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2642:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2648:11)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2680:13)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2642:9)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2648:11)::zipcopy:  Assume directive not useful: removing
+
+fileio.c(2680:13)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6469:5)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6524:36)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6525:5)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6528:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6530:15)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6530:51)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6531:7)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(6415:11)::zipcopy:  Assume directive not useful: removing
+
+zipfile.c(959:7)::read_Unicode_Path_local_entry:  Assume directive not useful: removing
+
+zipfile.c(960:7)::read_Unicode_Path_local_entry:  Assume directive not useful: removing
+
+fileio.c(2642:9)::bfwrite:  Assume directive not useful: removing
+
+fileio.c(2648:11)::bfwrite:  Assume directive not useful: removing
+
+fileio.c(2680:13)::bfwrite:  Assume directive not useful: removing
+
+fileio.c(2760:13)::bfwrite:  Assume directive not useful: removing
+
+fileio.c(2642:9)::putextended:  Assume directive not useful: removing
+
+fileio.c(2648:11)::putextended:  Assume directive not useful: removing
+
+fileio.c(2680:13)::putextended:  Assume directive not useful: removing
+
+fileio.c(2760:13)::putextended:  Assume directive not useful: removing
+
+zipfile.c(4099:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4100:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4101:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4102:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4204:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4239:5)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4264:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4265:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4303:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4304:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4370:15)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4371:15)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4421:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4422:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4508:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4509:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4524:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4525:11)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4565:9)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4566:9)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4591:9)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(4589:9)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(859:7)::readzipfile:  Assume directive not useful: removing
+
+zipfile.c(860:7)::readzipfile:  Assume directive not useful: removing
+

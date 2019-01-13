@@ -1,0 +1,636 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -diag-disable=10013,10385,10237,10346 -diag-error-limit=1 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=25555 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -Wall -inline-max-total-size=18888 -DUNIX -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -c -o zipup.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 18888 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: file_read()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (file_read()) [1/17=5.9%] zipup.c(1156,1)
+  -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+  -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+  -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+  -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+  -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+  -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+  -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+  -> EXTERN: (1285,5) ziperr(int, const char *)
+
+===========================================================================
+
+Begin optimization report for: sprintf(char *__restrict__, const char *__restrict__, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (sprintf(char *__restrict__, const char *__restrict__, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(35,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *__restrict__, const char *__restrict__, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *__restrict__, const char *__restrict__, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: read(int, void *, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (read(int, void *, size_t))/usr/include/x86_64-linux-gnu/bits/unistd.h(35,1)
+
+===========================================================================
+
+Begin optimization report for: readlink(const char *__restrict__, char *__restrict__, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (readlink(const char *__restrict__, char *__restrict__, size_t))/usr/include/x86_64-linux-gnu/bits/unistd.h(141,1)
+
+===========================================================================
+
+Begin optimization report for: open(const char *, int, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (open(const char *, int, ...))/usr/include/x86_64-linux-gnu/bits/fcntl2.h(42,1)
+
+===========================================================================
+
+Begin optimization report for: memcpy(void *__restrict__, const void *__restrict__, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memcpy(void *__restrict__, const void *__restrict__, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(33,1)
+
+===========================================================================
+
+Begin optimization report for: is_seekable()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (is_seekable()) [8/17=47.1%] zipup.c(225,1)
+  -> EXTERN: (234,9) ftello(FILE *)
+  -> EXTERN: (235,7) fseeko(FILE *, __off64_t, int)
+
+===========================================================================
+
+Begin optimization report for: percent()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (percent()) [9/17=52.9%] zipup.c(248,1)
+
+===========================================================================
+
+Begin optimization report for: suffixes()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (suffixes()) zipup.c(307,1)
+
+===========================================================================
+
+Begin optimization report for: zipup()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (zipup()) [11/17=64.7%] zipup.c(394,1)
+  -> EXTERN: (427,12) strlen(const char *)
+  -> EXTERN: (439,9) filetime(char *, ulg *, zoff_t *, iztimes *)
+  -> INLINE: (459,5) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (460,5) DisplayNumString(FILE *, uzoff_t)
+  -> INLINE: (461,5) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (463,5) fflush(FILE *)
+  -> INLINE: (466,5) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (467,5) DisplayNumString(FILE *, uzoff_t)
+  -> INLINE: (468,5) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (470,5) fflush(FILE *)
+  -> EXTERN: (485,24) malloc(size_t)
+  -> EXTERN: (486,9) ziperr(int, const char *)
+  -> INLINE (MANUAL): (488,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (492,25) malloc(size_t)
+  -> EXTERN: (493,9) ziperr(int, const char *)
+  -> INLINE (MANUAL): (495,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (500,5) free(void *)
+  -> EXTERN: (503,5) free(void *)
+  -> INLINE: (517,26) suffixes() (isz = 52) (sz = 62)
+    -> EXTERN: (324,11) strlen(const char *)
+    -> EXTERN: (326,16) strlen(const char *)
+    -> EXTERN: (340,17) strlen(const char *)
+  -> EXTERN: (541,7) strcmp(const char *, const char *)
+  -> EXTERN: (555,7) set_extra_field(struct zlist *, iztimes *)
+  -> EXTERN: (575,9) issymlnk(ulg)
+  -> INLINE: (609,20) open(const char *, int, ...) (isz = 48) (sz = 60)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(43,7) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(44,5) __open_too_many_args(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(46,7) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(48,42) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(50,4) __open_missing_mode(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(51,11) __open_2(const char *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(53,14) __open_alias(const char *, int, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(53,45) __builtin_va_arg_pack(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(56,7) __builtin_va_arg_pack_len(void)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(57,12) __open_2(const char *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(59,10) __open_alias(const char *, int, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/fcntl2.h:(59,41) __builtin_va_arg_pack(void)
+  -> EXTERN: (683,9) copy_nondup_extra_fields(char *, unsigned int, char *, unsigned int, unsigned int *)
+  -> EXTERN: (684,5) free(void *)
+  -> EXTERN: (687,9) copy_nondup_extra_fields(char *, unsigned int, char *, unsigned int, unsigned int *)
+  -> EXTERN: (688,5) free(void *)
+  -> EXTERN: (693,7) free(void *)
+  -> EXTERN: (695,7) free(void *)
+  -> EXTERN: (785,12) putlocal(struct zlist *, int)
+  -> EXTERN: (787,7) close(int)
+  -> EXTERN: (802,5) crypthead(const char *, ulg)
+  -> EXTERN: (807,7) ferror(FILE *)
+  -> EXTERN: (809,7) close(int)
+  -> EXTERN: (810,5) ziperr(int, const char *)
+  -> EXTERN: (814,7) ftello(FILE *)
+  -> EXTERN: (815,7) ferror(FILE *)
+  -> EXTERN: (816,5) clearerr(FILE *)
+  -> INLINE: (819,5) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (819,37) zip_fzofft(zoff_t, char *, char *)
+  -> EXTERN: (820,37) zip_fzofft(zoff_t, char *, char *)
+  -> EXTERN: (821,5) ziperr(int, const char *)
+  -> INLINE: (836,11) bzfilecompress() (isz = 942) (sz = 951)
+    -> EXTERN: (1748,26) malloc(size_t)
+    -> EXTERN: (1750,26) malloc(size_t)
+    -> EXTERN: (1756,9) ziperr(int, const char *)
+    -> INLINE: (1759,15) bz_compress_init() (isz = 34) (sz = 41)
+      -> EXTERN: (1676,16) BZ2_bzlibVersion(void)
+      -> EXTERN: (1685,11) BZ2_bzCompressInit(bz_stream *, int, int, int)
+      -> INLINE: (1688,9) sprintf(char *__restrict__, const char *__restrict__, ...) (isz = 10) (sz = 19)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(36,10) __builtin___sprintf_chk(char *, int, unsigned long, const char *, ...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,27) __builtin_va_arg_pack(void)
+      -> INLINE: (1691,9) sprintf(char *__restrict__, const char *__restrict__, ...) (isz = 10) (sz = 19)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(36,10) __builtin___sprintf_chk(char *, int, unsigned long, const char *, ...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,27) __builtin_va_arg_pack(void)
+    -> EXTERN: (1761,13) ziperr(int, const char *)
+    -> INLINE: (1773,22) file_read() (isz = 201) (sz = 213)
+      -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+      -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+      -> EXTERN: (1285,5) ziperr(int, const char *)
+    -> EXTERN: (1776,12) is_text_buf(const char *, unsigned int)
+    -> INLINE: (1780,25) file_read() (isz = 201) (sz = 213)
+      -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+      -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+      -> EXTERN: (1285,5) ziperr(int, const char *)
+    -> EXTERN: (1793,15) BZ2_bzCompress(bz_stream *, int)
+    -> INLINE: (1795,13) sprintf(char *__restrict__, const char *__restrict__, ...) (isz = 10) (sz = 19)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(36,10) __builtin___sprintf_chk(char *, int, unsigned long, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,27) __builtin_va_arg_pack(void)
+    -> EXTERN: (1796,13) ziperr(int, const char *)
+    -> EXTERN: (1799,17) zfwrite(zvoid *, extent, extent)
+    -> EXTERN: (1800,17) ziperr(int, const char *)
+    -> EXTERN: (1821,27) putc(int, FILE *)
+    -> EXTERN: (1822,27) fflush(FILE *)
+    -> EXTERN: (1833,25) putc(int, FILE *)
+    -> EXTERN: (1834,25) fflush(FILE *)
+    -> INLINE: (1848,30) file_read() (isz = 201) (sz = 213)
+      -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+      -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+      -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+        -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+      -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+      -> EXTERN: (1285,5) ziperr(int, const char *)
+    -> EXTERN: (1851,20) is_text_buf(const char *, unsigned int)
+    -> EXTERN: (1867,15) BZ2_bzCompress(bz_stream *, int)
+    -> EXTERN: (1877,20) fseekable(FILE *)
+    -> EXTERN: (1881,21) zfwrite(zvoid *, extent, extent)
+    -> EXTERN: (1882,21) ziperr(int, const char *)
+    -> EXTERN: (1893,17) zfwrite(zvoid *, extent, extent)
+    -> EXTERN: (1894,17) ziperr(int, const char *)
+    -> INLINE: (1902,9) sprintf(char *__restrict__, const char *__restrict__, ...) (isz = 10) (sz = 19)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(36,10) __builtin___sprintf_chk(char *, int, unsigned long, const char *, ...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(37,27) __builtin_va_arg_pack(void)
+    -> EXTERN: (1903,9) ziperr(int, const char *)
+    -> EXTERN: (1915,16) BZ2_bzCompressEnd(bz_stream *)
+    -> EXTERN: (1916,9) ziperr(int, const char *)
+  -> INLINE: (841,11) filecompress() (isz = 18) (sz = 27)
+    -> EXTERN: (1582,5) bi_init(char *, unsigned int, int)
+    -> EXTERN: (1583,5) ct_init(ush *, int *)
+    -> EXTERN: (1584,5) lm_init(int, ush *)
+    -> EXTERN: (1585,12) deflate(void)
+  -> EXTERN: (846,9) zipwarn(const char *, const char *)
+  -> EXTERN: (848,9) zipwarn(const char *, const char *)
+  -> EXTERN: (852,9) zipwarn(const char *, const char *)
+  -> EXTERN: (854,9) zipwarn(const char *, const char *)
+  -> EXTERN: (860,14) malloc(size_t)
+  -> INLINE (MANUAL): (864,11) readlink(const char *__restrict__, char *__restrict__, size_t) (isz = 41) (sz = 54)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(142,7) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(144,12) __builtin_constant_p(...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(145,9) __readlink_chk(const char *__restrict__, char *__restrict__, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(145,47) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(147,20) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(148,9) __readlink_chk_warn(const char *__restrict__, char *__restrict__, size_t, size_t)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(148,52) __builtin_object_size(const void *, int)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(150,10) __readlink_alias(const char *__restrict__, char *__restrict__, size_t)
+  -> EXTERN: (868,13) crc32(ulg, const uch *, extent)
+  -> EXTERN: (869,11) zfwrite(zvoid *, extent, extent)
+  -> EXTERN: (871,9) free(void *)
+  -> INLINE: (882,19) file_read() (isz = 201) (sz = 213)
+    -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+    -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+    -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+    -> EXTERN: (1285,5) ziperr(int, const char *)
+  -> INLINE: (882,19) file_read() (isz = 201) (sz = 213)
+    -> INLINE (MANUAL): (1177,11) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> INLINE (MANUAL): (1193,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1199,21) is_text_buf(const char *, unsigned int)
+    -> INLINE (MANUAL): (1225,7) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> INLINE (MANUAL): (1232,18) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1238,21) is_text_buf(const char *, unsigned int)
+    -> INLINE (MANUAL): (1264,10) read(int, void *, size_t) (isz = 41) (sz = 54)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(36,7) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(38,12) __builtin_constant_p(...)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,9) __read_chk(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(39,44) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(41,22) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,9) __read_chk_warn(int, void *, size_t, size_t)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(42,49) __builtin_object_size(const void *, int)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/unistd.h:(44,10) __read_alias(int, void *, size_t)
+    -> EXTERN: (1276,9) crc32(ulg, const uch *, extent)
+    -> EXTERN: (1285,5) ziperr(int, const char *)
+  -> EXTERN: (884,13) zfwrite(zvoid *, extent, extent)
+  -> EXTERN: (887,13) close(int)
+  -> EXTERN: (888,11) free(void *)
+  -> EXTERN: (896,15) putc(int, FILE *)
+  -> EXTERN: (897,15) fflush(FILE *)
+  -> EXTERN: (908,13) putc(int, FILE *)
+  -> EXTERN: (909,13) fflush(FILE *)
+  -> EXTERN: (918,5) free(void *)
+  -> EXTERN: (922,5) perror(const char *)
+  -> INLINE: (924,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (924,47) strerror(int)
+  -> EXTERN: (924,56) __errno_location(void)
+  -> EXTERN: (925,5) zipwarn(const char *, const char *)
+  -> EXTERN: (928,5) close(int)
+  -> EXTERN: (948,5) zipwarn(const char *, const char *)
+  -> EXTERN: (979,28) fseeko(FILE *, __off64_t, int)
+  -> EXTERN: (983,10) error(const char *)
+  -> EXTERN: (985,10) ziperr(int, const char *)
+  -> EXTERN: (986,16) putextended(struct zlist *)
+  -> INLINE: (998,9) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (999,17) zip_fzofft(zoff_t, char *, char *)
+  -> EXTERN: (999,44) zip_fzofft(zoff_t, char *, char *)
+  -> EXTERN: (1000,9) error(const char *)
+  -> EXTERN: (1044,13) fseeko(FILE *, __off64_t, int)
+  -> EXTERN: (1049,16) putlocal(struct zlist *, int)
+  -> EXTERN: (1052,11) fseeko(FILE *, __off64_t, int)
+  -> EXTERN: (1057,18) putextended(struct zlist *)
+  -> EXTERN: (1073,7) free(void *)
+  -> INLINE: (1083,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (1084,16) zip_fzofft(zoff_t, char *, char *)
+  -> EXTERN: (1084,46) zip_fzofft(zoff_t, char *, char *)
+  -> INLINE: (1088,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> INLINE: (1088,42) percent() (isz = 23) (sz = 32)
+  -> INLINE: (1092,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> INLINE: (1092,43) percent() (isz = 23) (sz = 32)
+  -> INLINE: (1094,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (1096,5) fflush(FILE *)
+  -> INLINE: (1102,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> INLINE: (1102,45) percent() (isz = 23) (sz = 32)
+  -> INLINE: (1106,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> INLINE: (1106,46) percent() (isz = 23) (sz = 32)
+  -> INLINE: (1108,7) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (1110,5) fflush(FILE *)
+
+===========================================================================
+
+Begin optimization report for: flush_outbuf()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (flush_outbuf()) [12/17=70.6%] zipup.c(1389,1)
+  -> EXTERN: (1391,9) error(const char *)
+  -> EXTERN: (1395,9) zfwrite(zvoid *, extent, extent)
+  -> EXTERN: (1396,13) ferror(FILE *)
+  -> EXTERN: (1396,24) ziperr(int, const char *)
+
+===========================================================================
+
+Begin optimization report for: seekable()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (seekable()) [13/17=76.5%] zipup.c(1408,1)
+  -> EXTERN: (1409,12) fseekable(FILE *)
+
+===========================================================================
+
+Begin optimization report for: filecompress()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (filecompress()) zipup.c(1420,1)
+
+===========================================================================
+
+Begin optimization report for: bz_compress_free()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (bz_compress_free()) [15/17=88.2%] zipup.c(1700,1)
+  -> EXTERN: (1704,9) free(void *)
+  -> EXTERN: (1708,9) free(void *)
+  -> EXTERN: (1712,15) BZ2_bzCompressEnd(bz_stream *)
+  -> EXTERN: (1714,13) ziperr(int, const char *)
+
+===========================================================================
+
+Begin optimization report for: bzfilecompress()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (bzfilecompress()) zipup.c(1727,1)
+
+===========================================================================
+
+Begin optimization report for: bz_compress_init()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (bz_compress_init()) zipup.c(1671,1)
+
+===========================================================================

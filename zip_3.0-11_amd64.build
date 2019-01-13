@@ -1,0 +1,363 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package zip
+dpkg-buildpackage: info: source version 3.0-11
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Santiago Vila <sanvila@debian.org>
+icc: remark #10397: optimization reports are generated in *.optrpt files in the output location
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+/usr/bin/make -f unix/Makefile clean
+make[2]: Entering directory '/dev/shm/zip/zip-3.0'
+rm -f *.o zip zipcloak zipnote zipsplit flags
+rm -rf IZzip
+make[2]: Leaving directory '/dev/shm/zip/zip-3.0'
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f debian/zip.debhelper.log
+	rm -f -- debian/zip.substvars debian/files
+	rm -fr -- debian/zip/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=1466665709 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   debian/rules override_dh_auto_configure
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+LDFLAGS="`dpkg-buildflags --get LDFLAGS`" sh unix/configure "icc.pl " "`dpkg-buildflags --get CFLAGS` -Wall -I. -DUNIX -inline-max-total-size=18888 `dpkg-buildflags --get CPPFLAGS`"
+Check C compiler type (optimization options)
+  GNU C ()
+Check bzip2 support
+  Check for bzip2 in bzip2 directory
+  Check if OS already has bzip2 library installed
+-- OS supports bzip2 - linking in bzip2
+Check for the C preprocessor
+Check if we can use asm code
+Check for ANSI options
+Check for prototypes
+Check the handling of const
+Check for time_t
+Check for size_t
+Check for off_t
+Check size of UIDs and GIDs
+(Now zip stores variable size UIDs/GIDs using a new extra field.  This
+ tests if this OS uses 16-bit UIDs/GIDs and so if the old 16-bit storage
+ should also be used for backward compatibility.)
+  s.st_uid is 4 bytes
+  s.st_gid is 4 bytes
+-- UID not 2 bytes - disabling old 16-bit UID/GID support
+Check for Large File Support
+  off_t is 8 bytes
+-- yes we have Large File Support!
+Check for wide char support
+-- have wchar_t - enabling Unicode support
+Check for gcc no-builtin flag
+Check for rmdir
+Check for strchr
+Check for strrchr
+Check for rename
+Check for mktemp
+Check for mktime
+Check for mkstemp
+Check for memset
+Check for memmove
+Check for strerror
+Check for errno declaration
+Check for directory libraries
+Check for readlink
+Check for directory include file
+Check for nonexistent include files
+Check for term I/O include file
+Check for valloc
+Check for /usr/local/bin and /usr/local/man
+Check for OS-specific flags
+Check for symbolic links
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+   debian/rules override_dh_auto_build
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+/usr/bin/make -f unix/Makefile generic
+make[2]: Entering directory '/dev/shm/zip/zip-3.0'
+eval /usr/bin/make -f unix/Makefile zips `cat flags`
+make[3]: Entering directory '/dev/shm/zip/zip-3.0'
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zip.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zipfile.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zipup.c
+zipup.c(1264): warning #2218: result of call is not used
+           zread(ifile, buf, 1); len = 1; /* keep single \r if EOF */
+           ^
+
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H fileio.c
+fileio.c(2120): warning #2218: result of call is not used
+      fgets(buf, SPLIT_MAXPATH, stdin);
+      ^
+
+fileio.c(2143): warning #2218: result of call is not used
+        fgets(buf, SPLIT_MAXPATH, stdin);
+        ^
+
+fileio.c(2324): warning #2218: result of call is not used
+      fgets(buf, FNMAX, stdin);
+      ^
+
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H util.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H globals.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H crypt.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H ttyio.c
+ttyio.c(628): warning #2218: result of call is not used
+              read(f, &c, 1);
+              ^
+
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H unix/unix.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H crc32.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zbz2err.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H deflate.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H trees.c
+icc.pl  -o zip  zip.o zipfile.o zipup.o fileio.o util.o globals.o crypt.o ttyio.o unix.o crc32.o zbz2err.o deflate.o trees.o  -lbz2
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_icc72TRSD.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_icc72TRSD.o
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_icc72TRSD.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zipcloak.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o zipfile_.o zipfile.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o fileio_.o fileio.c
+fileio.c(2120): warning #2218: result of call is not used
+      fgets(buf, SPLIT_MAXPATH, stdin);
+      ^
+
+fileio.c(2143): warning #2218: result of call is not used
+        fgets(buf, SPLIT_MAXPATH, stdin);
+        ^
+
+fileio.c(2324): warning #2218: result of call is not used
+      fgets(buf, FNMAX, stdin);
+      ^
+
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o util_.o util.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o unix_.o unix/unix.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o crc32_.o crc32.c
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -DUTIL -o crypt_.o crypt.c
+icc.pl  -o zipcloak  zipcloak.o zipfile_.o fileio_.o util_.o globals.o unix_.o crc32_.o   crypt_.o ttyio.o -lbz2
+ipo: warning #11021: unresolved __open_missing_mode
+        Referenced in /tmp/intel/ipo_iccyeFS5A.o
+ipo: warning #11021: unresolved __open_too_many_args
+        Referenced in /tmp/intel/ipo_iccyeFS5A.o
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_iccyeFS5A.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zipnote.c
+icc.pl  -o zipnote  zipnote.o  zipfile_.o fileio_.o util_.o globals.o unix_.o crc32_.o  -lbz2
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_iccXf9A0h.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+icc.pl  -c -g -O2 -fdebug-prefix-map=/dev/shm/zip/zip-3.0=. -Wformat -march=native -pipe -Wformat-security -Wall -I. -DUNIX -inline-max-total-size=18888 -Wdate-time -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H zipsplit.c
+zipsplit.c(496): warning #2218: result of call is not used
+    fgets(m, 10, stdin);
+    ^
+
+zipsplit.c(884): warning #2218: result of call is not used
+        fgets(m, 10, stdin);
+        ^
+
+icc.pl  -o zipsplit  zipsplit.o zipfile_.o fileio_.o util_.o globals.o unix_.o crc32_.o  -lbz2
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11006: generating object file /tmp/intel/ipo_iccS2zAdy.o
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[3]: Leaving directory '/dev/shm/zip/zip-3.0'
+make[2]: Leaving directory '/dev/shm/zip/zip-3.0'
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+ fakeroot debian/rules binary
+dh binary
+   dh_testroot
+   dh_prep
+	rm -f -- debian/zip.substvars
+	rm -fr -- debian/.debhelper/generated/zip/ debian/zip/ debian/tmp/
+   debian/rules override_dh_auto_install
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+/usr/bin/make -f unix/Makefile install prefix=`pwd`/debian/tmp/usr
+make[2]: Entering directory '/dev/shm/zip/zip-3.0'
+mkdir -p /dev/shm/zip/zip-3.0/debian/tmp/usr/bin
+cp zip zipcloak zipnote zipsplit /dev/shm/zip/zip-3.0/debian/tmp/usr/bin
+cd /dev/shm/zip/zip-3.0/debian/tmp/usr/bin; chmod 755 zip zipcloak zipnote zipsplit
+mkdir -p /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1
+cp man/zip.1 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zip.1
+chmod 644 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zip.1
+cp man/zipcloak.1 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipcloak.1
+chmod 644 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipcloak.1
+cp man/zipnote.1 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipnote.1
+chmod 644 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipnote.1
+cp man/zipsplit.1 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipsplit.1
+chmod 644 /dev/shm/zip/zip-3.0/debian/tmp/usr/man/man1/zipsplit.1
+make[2]: Leaving directory '/dev/shm/zip/zip-3.0'
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+   dh_install
+	install -d debian/zip//usr/bin
+	cp --reflink=auto -a debian/tmp/usr/bin/zip debian/tmp/usr/bin/zipcloak debian/tmp/usr/bin/zipnote debian/tmp/usr/bin/zipsplit debian/zip//usr/bin/
+	install -d debian/zip/usr/share/man
+	cp --reflink=auto -a debian/tmp/usr/man/man1 debian/zip/usr/share/man/
+	install -d debian/.debhelper/generated/zip
+   dh_installdocs
+	install -d debian/zip/usr/share/doc/zip
+	install -p -m0644 debian/copyright debian/zip/usr/share/doc/zip/copyright
+   debian/rules override_dh_installchangelogs
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+dh_installchangelogs -XCHANGES
+	install -p -m0644 debian/changelog debian/zip/usr/share/doc/zip/changelog.Debian
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+   dh_installman
+	man -l --recode UTF-8 ./debian/zip/usr/share/man/man1/zipcloak.1 > debian/zip/usr/share/man/man1/zipcloak.1.dh-new
+	man -l --recode UTF-8 ./debian/zip/usr/share/man/man1/zipsplit.1 > debian/zip/usr/share/man/man1/zipsplit.1.dh-new
+	man -l --recode UTF-8 ./debian/zip/usr/share/man/man1/zipnote.1 > debian/zip/usr/share/man/man1/zipnote.1.dh-new
+	man -l --recode UTF-8 ./debian/zip/usr/share/man/man1/zip.1 > debian/zip/usr/share/man/man1/zip.1.dh-new
+	mv debian/zip/usr/share/man/man1/zipsplit.1.dh-new debian/zip/usr/share/man/man1/zipsplit.1
+	chmod 0644 -- debian/zip/usr/share/man/man1/zipsplit.1
+	mv debian/zip/usr/share/man/man1/zipcloak.1.dh-new debian/zip/usr/share/man/man1/zipcloak.1
+	chmod 0644 -- debian/zip/usr/share/man/man1/zipcloak.1
+	mv debian/zip/usr/share/man/man1/zipnote.1.dh-new debian/zip/usr/share/man/man1/zipnote.1
+	chmod 0644 -- debian/zip/usr/share/man/man1/zipnote.1
+	mv debian/zip/usr/share/man/man1/zip.1.dh-new debian/zip/usr/share/man/man1/zip.1
+	chmod 0644 -- debian/zip/usr/share/man/man1/zip.1
+   dh_perl
+   dh_link
+	rm -f debian/zip/usr/share/doc/zip/changelog.gz
+	ln -s CHANGES.gz debian/zip/usr/share/doc/zip/changelog.gz
+   dh_strip_nondeterminism
+   debian/rules override_dh_compress
+make[1]: Entering directory '/dev/shm/zip/zip-3.0'
+dh_compress -XTODO -XWHATSNEW
+	cd debian/zip
+	chmod a-x usr/share/doc/zip/changelog.Debian usr/share/man/man1/zip.1 usr/share/man/man1/zipcloak.1 usr/share/man/man1/zipnote.1 usr/share/man/man1/zipsplit.1
+	gzip -9nf usr/share/doc/zip/changelog.Debian usr/share/man/man1/zip.1 usr/share/man/man1/zipcloak.1 usr/share/man/man1/zipnote.1 usr/share/man/man1/zipsplit.1
+	cd '/dev/shm/zip/zip-3.0'
+make[1]: Leaving directory '/dev/shm/zip/zip-3.0'
+   dh_fixperms
+	find debian/zip -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/zip ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/zip/usr/share/doc -type f -a -true -a ! -regex 'debian/zip/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/zip/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/zip/usr/share/man -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/zip -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/zip/usr/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+   dh_missing
+   dh_strip
+	install -d debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/75
+	objcopy --only-keep-debug --compress-debug-sections debian/zip/usr/bin/zipsplit debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/75/6529b9dc742b734124801660826e9b27dbedff.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/75/6529b9dc742b734124801660826e9b27dbedff.debug
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/75/6529b9dc742b734124801660826e9b27dbedff.debug
+	strip --remove-section=.comment --remove-section=.note debian/zip/usr/bin/zipsplit
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/75/6529b9dc742b734124801660826e9b27dbedff.debug debian/zip/usr/bin/zipsplit
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/96
+	objcopy --only-keep-debug --compress-debug-sections debian/zip/usr/bin/zipnote debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/96/6f0e0bbc406be0333478746bff240f231e46fe.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/96/6f0e0bbc406be0333478746bff240f231e46fe.debug
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/96/6f0e0bbc406be0333478746bff240f231e46fe.debug
+	strip --remove-section=.comment --remove-section=.note debian/zip/usr/bin/zipnote
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/96/6f0e0bbc406be0333478746bff240f231e46fe.debug debian/zip/usr/bin/zipnote
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/07
+	objcopy --only-keep-debug --compress-debug-sections debian/zip/usr/bin/zipcloak debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/07/31e322fc6c4a3ceaee69a108037ddd1e34534e.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/07/31e322fc6c4a3ceaee69a108037ddd1e34534e.debug
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/07/31e322fc6c4a3ceaee69a108037ddd1e34534e.debug
+	strip --remove-section=.comment --remove-section=.note debian/zip/usr/bin/zipcloak
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/07/31e322fc6c4a3ceaee69a108037ddd1e34534e.debug debian/zip/usr/bin/zipcloak
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/63
+	objcopy --only-keep-debug --compress-debug-sections debian/zip/usr/bin/zip debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/63/9cea7a93711fcedb07b3a245249322623d6982.debug
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/63/9cea7a93711fcedb07b3a245249322623d6982.debug
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/63/9cea7a93711fcedb07b3a245249322623d6982.debug
+	strip --remove-section=.comment --remove-section=.note debian/zip/usr/bin/zip
+strip: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	objcopy --add-gnu-debuglink debian/.debhelper/zip/dbgsym-root/usr/lib/debug/.build-id/63/9cea7a93711fcedb07b3a245249322623d6982.debug debian/zip/usr/bin/zip
+objcopy: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+	install -d debian/.debhelper/zip/dbgsym-root/usr/share/doc
+	ln -s zip debian/.debhelper/zip/dbgsym-root/usr/share/doc/zip-dbgsym
+   dh_makeshlibs
+	rm -f debian/zip/DEBIAN/shlibs
+   dh_shlibdeps
+	install -d debian/zip/DEBIAN
+	dpkg-shlibdeps -Tdebian/zip.substvars debian/zip/usr/bin/zip debian/zip/usr/bin/zipcloak debian/zip/usr/bin/zipnote debian/zip/usr/bin/zipsplit
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+objdump: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+   dh_installdeb
+   dh_gencontrol
+	echo misc:Depends= >> debian/zip.substvars
+	echo misc:Pre-Depends= >> debian/zip.substvars
+	install -d debian/.debhelper/zip/dbgsym-root/DEBIAN
+	dpkg-gencontrol -pzip -ldebian/changelog -Tdebian/zip.substvars -Pdebian/.debhelper/zip/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=zip-dbgsym "-DDepends=zip (= \${binary:Version})" "-DDescription=debug symbols for zip" "-DBuild-Ids=0731e322fc6c4a3ceaee69a108037ddd1e34534e 639cea7a93711fcedb07b3a245249322623d6982 756529b9dc742b734124801660826e9b27dbedff 966f0e0bbc406be0333478746bff240f231e46fe" -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -pzip -ldebian/changelog -Tdebian/zip.substvars -Pdebian/zip
+	chmod 0644 -- debian/zip/DEBIAN/control
+	chown 0:0 -- debian/zip/DEBIAN/control
+   dh_md5sums
+	cd debian/zip >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/zip/DEBIAN/md5sums
+	chown 0:0 -- debian/zip/DEBIAN/md5sums
+	cd debian/.debhelper/zip/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/zip/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/zip/dbgsym-root/DEBIAN/md5sums
+   dh_builddeb
+	dpkg-deb --build debian/zip ..
+	dpkg-deb --build debian/.debhelper/zip/dbgsym-root ..
+dpkg-deb: building package 'zip-dbgsym' in '../zip-dbgsym_3.0-11_amd64.deb'.
+dpkg-deb: building package 'zip' in '../zip_3.0-11_amd64.deb'.
+FAKEROOTKEY=1320191354 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../zip_3.0-11_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian zip_3.0-11_amd64.changes ...
+strings: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: zip-dbgsym: debug-file-with-no-debug-symbols usr/lib/debug/.build-id/63/9cea7a93711fcedb07b3a245249322623d6982.debug
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+W: zip: hardening-no-pie usr/bin/zip
+W: zip: hardening-no-pie usr/bin/zipcloak
+W: zip: hardening-no-pie usr/bin/zipnote
+W: zip: hardening-no-pie usr/bin/zipsplit
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+Finished running lintian.

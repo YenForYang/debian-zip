@@ -1,0 +1,328 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.1.144 Build 20181018
+
+Compiler options: -I. -diag-disable=10013,10385,10237,10346 -diag-error-limit=1 -Wremarks -w3 -O3 -fabi-version=13 -falign-functions -falign-loops -fbuiltin -fdata-sections -ffunction-sections -ffat-lto-objects -fpermissive -gcc-name=gcc-8 -gnu-prefix=x86_64-linux-gnu- -gxx-name=g++-8 -inline-level=2 -inline-min-caller-growth=0 -ipo -par-schedule-auto -parallel -qoverride-limits -qopt-matmul -qopt-mem-layout-trans -qopt-multi-version-aggressive -qopt-prefetch -static-intel -no-inline-max-per-routine -no-inline-max-per-compile -no-inline-max-size -inline-max-total-size=25555 -Wl,--as-needed -qopt-report=5 -qopt-report-phase ipo -g -Wformat -Wformat-security -Wall -inline-max-total-size=18888 -DUNIX -D_FORTIFY_SOURCE=2 -DBZIP2_SUPPORT -DUIDGID_NOT_16BIT -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT -DHAVE_DIRENT_H -DHAVE_TERMIOS_H -c -o unix.o -Wl,--relax,--gc-sections,-O,2 -pipe -D__POPCNT__ -D__PCLMUL__ -D__AES__ -D__RDRND__ -axSSE4.2 -minstruction=movbe -xATOM_SSE4.2
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: false
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: false
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: disabled (user-specified)
+  -inline-max-total-size: 18888 (user-specified)
+  -inline-max-per-routine: disabled (user-specified)
+  -inline-max-per-compile: disabled (user-specified)
+
+In the inlining report below:
+   "sz" refers to the "size" of the routine. The smaller a routine's size,
+      the more likely it is to be inlined.
+   "isz" refers to the "inlined size" of the routine. This is the amount
+      the calling routine will grow if the called routine is inlined into it.
+      The compiler generally limits the amount a routine can grow by having
+      routines inlined into it.
+
+Begin optimization report for: stat(const char *, struct stat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (stat(const char *, struct stat *))/usr/include/x86_64-linux-gnu/sys/stat.h(454,1)
+
+===========================================================================
+
+Begin optimization report for: lstat(const char *, struct stat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (lstat(const char *, struct stat *))/usr/include/x86_64-linux-gnu/sys/stat.h(461,1)
+
+===========================================================================
+
+Begin optimization report for: fstat(int, struct stat *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fstat(int, struct stat *))/usr/include/x86_64-linux-gnu/sys/stat.h(468,1)
+
+===========================================================================
+
+Begin optimization report for: fprintf(FILE *__restrict__, const char *__restrict__, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (fprintf(FILE *__restrict__, const char *__restrict__, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(99,1)
+
+===========================================================================
+
+Begin optimization report for: printf(const char *__restrict__, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (printf(const char *__restrict__, ...))/usr/include/x86_64-linux-gnu/bits/stdio2.h(106,1)
+
+===========================================================================
+
+Begin optimization report for: memcpy(void *__restrict__, const void *__restrict__, size_t)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (memcpy(void *__restrict__, const void *__restrict__, size_t))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(33,1)
+
+===========================================================================
+
+Begin optimization report for: strcpy(char *__restrict__, const char *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (strcpy(char *__restrict__, const char *__restrict__))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(89,1)
+
+===========================================================================
+
+Begin optimization report for: strcat(char *__restrict__, const char *__restrict__)
+
+    Report from: Interprocedural optimizations [ipo]
+
+NEVER EMIT DEFINITION FUNCTION: (strcat(char *__restrict__, const char *__restrict__))/usr/include/x86_64-linux-gnu/bits/string_fortified.h(127,1)
+
+===========================================================================
+
+Begin optimization report for: readd()
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (readd()) unix/unix.c(100,1)
+
+===========================================================================
+
+Begin optimization report for: procname()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (procname()) [10/18=55.6%] unix/unix.c(112,1)
+  -> EXTERN: (121,7) strcmp(const char *, const char *)
+  -> EXTERN: (122,12) newname(char *, int, int)
+  -> INLINE (MANUAL): (123,12) stat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(455,10) __xstat(int, const char *, struct stat *)
+  -> INLINE (MANUAL): (123,12) lstat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(462,10) __lxstat(int, const char *, struct stat *)
+  -> INLINE: (126,9) ex2in() (isz = 134) (sz = 147)
+    -> EXTERN: (243,8) strncmp(const char *, const char *, size_t)
+    -> EXTERN: (263,9) last(char *, int)
+    -> EXTERN: (266,12) malloc(size_t)
+    -> EXTERN: (266,19) strlen(const char *)
+    -> INLINE (MANUAL): (268,3) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+    -> EXTERN: (271,5) msname(char *)
+  -> EXTERN: (129,11) shmatch(const char *, const char *, int)
+  -> EXTERN: (131,28) filter(char *, int)
+  -> INLINE: (133,13) fprintf(FILE *__restrict__, const char *__restrict__, ...) (isz = 5) (sz = 14)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(100,10) __fprintf_chk(FILE *__restrict__, int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(101,4) __builtin_va_arg_pack(void)
+  -> EXTERN: (138,5) free(void *)
+  -> EXTERN: (154,14) newname(char *, int, int)
+  -> EXTERN: (164,14) malloc(size_t)
+  -> EXTERN: (164,21) strlen(const char *)
+  -> EXTERN: (166,9) strcmp(const char *, const char *)
+  -> INLINE (MANUAL): (169,7) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> EXTERN: (170,15) strlen(const char *)
+  -> INLINE (MANUAL): (172,9) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> EXTERN: (173,28) newname(char *, int, int)
+  -> EXTERN: (174,9) free(void *)
+  -> EXTERN: (179,25) opendir(const char *)
+  -> INLINE: (181,19) readd() (isz = 8) (sz = 15)
+    -> EXTERN: (103,7) readdir(DIR *)
+  -> INLINE: (181,19) readd() (isz = 8) (sz = 15)
+    -> EXTERN: (103,7) readdir(DIR *)
+  -> EXTERN: (182,13) strcmp(const char *, const char *)
+  -> EXTERN: (182,31) strcmp(const char *, const char *)
+  -> EXTERN: (184,20) malloc(size_t)
+  -> EXTERN: (184,27) strlen(const char *)
+  -> EXTERN: (184,39) strlen(const char *)
+  -> EXTERN: (186,13) closedir(DIR *)
+  -> EXTERN: (187,13) free(void *)
+  -> INLINE (MANUAL): (190,11) strcat(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(128,10) __builtin___strcat_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(128,49) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (190,18) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> (191,20) procname() (isz = 437) (sz = 454)
+     [[ Callee not marked with inlining pragma  <1>]]
+  -> EXTERN: (194,15) zipwarn(const char *, const char *)
+  -> EXTERN: (196,15) ziperr(int, const char *)
+  -> EXTERN: (198,11) free(void *)
+  -> EXTERN: (201,7) closedir(DIR *)
+  -> EXTERN: (203,5) free(void *)
+  -> EXTERN: (215,18) zipwarn(const char *, const char *)
+  -> EXTERN: (216,16) newname(char *, int, int)
+  -> EXTERN: (219,7) zipwarn(const char *, const char *)
+  -> EXTERN: (224,5) zipwarn(const char *, const char *)
+
+===========================================================================
+
+Begin optimization report for: ex2in()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (ex2in()) [11/18=61.1%] unix/unix.c(234,1)
+  -> EXTERN: (243,8) strncmp(const char *, const char *, size_t)
+  -> EXTERN: (263,9) last(char *, int)
+  -> EXTERN: (266,12) malloc(size_t)
+  -> EXTERN: (266,19) strlen(const char *)
+  -> INLINE (MANUAL): (268,3) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> EXTERN: (271,5) msname(char *)
+
+===========================================================================
+
+Begin optimization report for: in2ex()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (in2ex()) [12/18=66.7%] unix/unix.c(289,1)
+  -> EXTERN: (292,12) malloc(size_t)
+  -> EXTERN: (292,19) strlen(const char *)
+  -> INLINE (MANUAL): (297,3) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+
+===========================================================================
+
+Begin optimization report for: stamp()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (stamp()) [13/18=72.2%] unix/unix.c(309,1)
+  -> EXTERN: (318,26) dos2unixtime(ulg)
+  -> EXTERN: (319,3) utime(const char *, const struct utimbuf *)
+
+===========================================================================
+
+Begin optimization report for: filetime()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (filetime()) [14/18=77.8%] unix/unix.c(343,1)
+  -> EXTERN: (347,13) strlen(const char *)
+  -> EXTERN: (358,15) malloc(size_t)
+  -> EXTERN: (359,5) ziperr(int, const char *)
+  -> INLINE (MANUAL): (361,3) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> EXTERN: (365,7) strcmp(const char *, const char *)
+  -> INLINE (MANUAL): (366,9) fstat(int, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(469,10) __fxstat(int, int, struct stat *)
+  -> EXTERN: (366,16) fileno(FILE *)
+  -> EXTERN: (367,7) free(void *)
+  -> EXTERN: (368,7) error(const char *)
+  -> INLINE (MANUAL): (371,12) stat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(455,10) __xstat(int, const char *, struct stat *)
+  -> INLINE (MANUAL): (371,12) lstat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(462,10) __lxstat(int, const char *, struct stat *)
+  -> EXTERN: (375,5) free(void *)
+  -> EXTERN: (378,3) free(void *)
+  -> EXTERN: (432,10) unix2dostime(time_t *)
+
+===========================================================================
+
+Begin optimization report for: set_new_unix_extra_field()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (set_new_unix_extra_field()) [15/18=83.3%] unix/unix.c(443,1)
+  -> EXTERN: (467,24) malloc(size_t)
+  -> EXTERN: (469,25) malloc(size_t)
+  -> INLINE (MANUAL): (473,5) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (475,5) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> EXTERN: (477,3) free(void *)
+  -> EXTERN: (479,3) free(void *)
+  -> INLINE (MANUAL): (556,3) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+
+===========================================================================
+
+Begin optimization report for: set_extra_field()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (set_extra_field()) [16/18=88.9%] unix/unix.c(570,1)
+  -> EXTERN: (573,13) strlen(const char *)
+  -> EXTERN: (578,15) malloc(size_t)
+  -> EXTERN: (579,5) ziperr(int, const char *)
+  -> INLINE (MANUAL): (581,3) strcpy(char *__restrict__, const char *__restrict__) (isz = 6) (sz = 15)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,10) __builtin___strcpy_chk(char *, const char *, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(90,49) __builtin_object_size(const void *, int)
+  -> INLINE (MANUAL): (585,7) stat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(455,10) __xstat(int, const char *, struct stat *)
+  -> INLINE (MANUAL): (585,7) lstat(const char *, struct stat *) (isz = 2) (sz = 11)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/sys/stat.h:(462,10) __lxstat(int, const char *, struct stat *)
+  -> EXTERN: (586,5) free(void *)
+  -> EXTERN: (589,3) free(void *)
+  -> EXTERN: (621,27) malloc(size_t)
+  -> EXTERN: (623,28) malloc(size_t)
+  -> INLINE (MANUAL): (657,3) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+  -> INLINE: (681,3) set_new_unix_extra_field() (isz = 347) (sz = 358)
+    -> EXTERN: (467,24) malloc(size_t)
+    -> EXTERN: (469,25) malloc(size_t)
+    -> INLINE (MANUAL): (473,5) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> INLINE (MANUAL): (475,5) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+    -> EXTERN: (477,3) free(void *)
+    -> EXTERN: (479,3) free(void *)
+    -> INLINE (MANUAL): (556,3) memcpy(void *__restrict__, const void *__restrict__, size_t) (isz = 6) (sz = 17)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,10) __builtin___memcpy_chk(void *, const void *, unsigned long, unsigned long)
+      -> EXTERN: /usr/include/x86_64-linux-gnu/bits/string_fortified.h:(34,56) __builtin_object_size(const void *, int)
+
+===========================================================================
+
+Begin optimization report for: deletedir()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (deletedir()) [17/18=94.4%] unix/unix.c(695,1)
+  -> EXTERN: (710,12) rmdir(const char *)
+
+===========================================================================
+
+Begin optimization report for: version_local()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (version_local()) [18/18=100.0%] unix/unix.c(731,1)
+  -> INLINE: (1029,5) printf(const char *__restrict__, ...) (isz = 5) (sz = 12)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,10) __printf_chk(int, const char *__restrict__, ...)
+    -> EXTERN: /usr/include/x86_64-linux-gnu/bits/stdio2.h:(107,56) __builtin_va_arg_pack(void)
+
+===========================================================================
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> The compiler's heuristics indicate that the function is not profitable to 
+    inline.  Override this decision by adding "inline 
+    __attribute__((always_inline))" to the declaration of the called function, 
+    or add "#pragma forceinline" before the call site.
+

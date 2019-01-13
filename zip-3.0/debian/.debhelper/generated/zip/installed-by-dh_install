@@ -1,0 +1,5 @@
+debian/tmp/usr/bin/zip
+debian/tmp/usr/bin/zipcloak
+debian/tmp/usr/bin/zipnote
+debian/tmp/usr/bin/zipsplit
+debian/tmp/usr/man/man1

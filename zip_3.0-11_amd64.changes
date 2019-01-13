@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Sun, 16 Aug 2015 23:38:04 +0200
+Source: zip
+Binary: zip
+Built-For-Profiles: nobiarch nocheck nodoc
+Architecture: amd64
+Version: 3.0-11
+Distribution: unstable
+Urgency: medium
+Maintainer: Santiago Vila <sanvila@debian.org>
+Changed-By: Santiago Vila <sanvila@debian.org>
+Description:
+ zip        - Archiver for .zip files
+Closes: 795569
+Changes:
+ zip (3.0-11) unstable; urgency=medium
+ .
+   * Ship a debian/copyright file in source package instead of generating
+     it a build time. Closes: #795569.
+Checksums-Sha1:
+ 681f815d2e6c31133a9a3f62129755ec0fc579ac 164964 zip-dbgsym_3.0-11_amd64.deb
+ 25c0753368d29ab6789c828ed45435c2565379e6 5349 zip_3.0-11_amd64.buildinfo
+ 0e723e37c9138f077a0488ef92281367194a89ba 315776 zip_3.0-11_amd64.deb
+Checksums-Sha256:
+ aba3f33adb0b0a2c5ddf144a7321d184a3a0578684e667d3367da5f1eb88ddc1 164964 zip-dbgsym_3.0-11_amd64.deb
+ 8505c5cc8df38db1c381a426c8a6761b9c890379484c3a45985ea0339302517a 5349 zip_3.0-11_amd64.buildinfo
+ fc20d7b6404b651c9f09ea6ff683c43543e510b05dd2c3e1b7cf4dad6a0f9776 315776 zip_3.0-11_amd64.deb
+Files:
+ 4f6968f1e09ad2cf67b21bf4a1d45574 164964 debug optional zip-dbgsym_3.0-11_amd64.deb
+ 76e098d18f11430115260f222bbd4e4d 5349 utils optional zip_3.0-11_amd64.buildinfo
+ 77ea7cd804cd61eab3abe15833faafb3 315776 utils optional zip_3.0-11_amd64.deb
